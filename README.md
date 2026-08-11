@@ -107,7 +107,7 @@ The project integrates the following datasets.
 | Lady Bird Johnson Wildflower Center | Gardening characteristics |
 | USDA PLANTS Database | Botanical taxonomy |
 | Pollinator Interaction Dataset | Pollinator observations |
-| iNaturalist API *(Future)* | Plant images |
+| iNaturalist API | Plant images |
 
 See:
 
@@ -294,7 +294,6 @@ Recommended Native Plants
 
 # Future Improvements
 
-- Integrate plant images
 - Recommendation ranking
 - Interactive map
 - County-level recommendations
