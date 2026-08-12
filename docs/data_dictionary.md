@@ -118,7 +118,6 @@ These fields indicate observations from the pollinator dataset and should not be
 | image_url | URL of plant image |
 | image_source | Source of plant image (e.g., iNaturalist) |
 
-Currently empty and reserved for future enhancement.
 
 ---
 

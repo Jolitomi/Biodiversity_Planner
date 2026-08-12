@@ -172,8 +172,6 @@ Only plants with exact scientific-name matches were merged.
 
 As a result, pollinator coverage should be interpreted as observed interactions within the available dataset rather than a complete representation of all pollinator relationships.
 
-Image URLs are currently placeholders and will be populated in a future enhancement.
-
 ---
 
 # Recommendation Engine Usage
@@ -198,7 +196,6 @@ This provides significantly faster filtering and simpler application logic.
 
 # Future Enhancements
 
-- Integrate iNaturalist plant images
 - Improve taxonomic matching
 - Add recommendation scoring
 - Expand support beyond the United States
