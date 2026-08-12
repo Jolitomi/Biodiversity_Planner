@@ -209,7 +209,7 @@ Contains:
 - Recommendation features
 - Engineered Boolean columns
 - Display information
-- Placeholder image fields
+- Plant image URLs (89.7% coverage, 894/997 species, sourced from iNaturalist)
 
 Used by:
 
@@ -236,11 +236,11 @@ Validation summary.
 - Pandas
 - NumPy
 - Jupyter Notebook
+- iNaturalist API — plant image sourcing
 
 Future:
 
 - Streamlit / Flask
-- iNaturalist API
 
 ---
 
@@ -287,6 +287,8 @@ Recommended Native Plants
 ✅ Master dataset completed
 
 ✅ Application dataset completed
+
+✅ Plant image integration completed (894/997 species, 89.7% coverage)
 
 🔄 Web application development in progress
 
