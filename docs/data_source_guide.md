@@ -25,7 +25,7 @@ The project integrates multiple publicly available datasets because no single da
 | Climate Smart Gardening Dataset | Lady Bird Johnson Wildflower Center (via Zenodo) | Gardening characteristics | Plant attributes |
 | USDA PLANTS Database | United States Department of Agriculture (USDA) | Botanical taxonomy | Scientific name validation |
 | Pollinator Interaction Dataset | Zenodo | Pollinator observations | Biodiversity enrichment |
-| iNaturalist API *(Future)* | iNaturalist | Plant images | Application enhancement |
+| iNaturalist API  | iNaturalist | Plant images | Application enhancement |
 
 ---
 
@@ -285,28 +285,23 @@ Examples include:
 
 ---
 
-# 5. iNaturalist API *(Future Enhancement)*
+# 5. iNaturalist API
 
 ## Purpose
+The iNaturalist API provides plant images for the application.
 
-The iNaturalist API will provide plant images for the application.
-
-Future fields include:
-
+Fields added:
 - image_url
 - image_source
 
 ---
 
 ## Current Status
-
-Not yet integrated.
-
-Placeholder columns already exist in:
-
+Integrated. Photo URLs sourced via the iNaturalist taxa API, matched by scientific name, and merged into:
+- plants_master.csv
 - plants_app.csv
 
-This allows future image integration without changing the application structure.
+Coverage: 894 of 997 species (89.7%). Remaining gaps are mostly botanical varieties/subspecies not indexed at that granularity on iNaturalist.
 
 ---
 
@@ -358,9 +353,9 @@ Consequently:
 
 ## Images
 
-Image fields currently contain placeholder values.
-
-Images will be integrated in a future development phase using the iNaturalist API.
+Images
+894 of 997 species (89.7%) have an image_url populated, sourced from iNaturalist.
+The remaining 103 species — mostly botanical varieties/subspecies — had no match in iNaturalist's database and have no image.
 
 ---
 
@@ -398,7 +393,7 @@ The recommendation engine should load **plants_app.csv** for all filtering and r
 | Climate Smart Gardening Dataset | https://zenodo.org/records/17941612 |
 | USDA PLANTS Database | https://plants.sc.egov.usda.gov/downloads |
 | Pollinator Interaction Dataset | https://zenodo.org/records/6824025 |
-| iNaturalist API *(Future)* | https://api.inaturalist.org/v1/ |
+| iNaturalist API  | https://api.inaturalist.org/v1/ |
 
 ---
 
