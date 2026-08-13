@@ -1,201 +1,212 @@
-# Biodiversity & Native Planting Planner
-## Data Handoff Document
+# 🔄 Data Handoff Guide
 
-Prepared by:
-Data Analytics Team
+## Biodiversity & Native Planting Planner
 
----
+**Team:** Vanguard Strategists
 
-# Overview
+## 1. Purpose
 
-The Data Analytics team prepared and integrated multiple public datasets into a production-ready application dataset for the Biodiversity & Native Planting Planner.
+This document describes how processed data moves from the analytics workflow into the application.
 
-The objective was to provide a clean, standardized dataset suitable for filtering native plants based on user gardening preferences.
+## 2. Overall Pipeline
 
----
+```text
+Raw Sources
+     ↓
+Raw Data
+     ↓
+Data Cleaning
+     ↓
+Data Standardization
+     ↓
+Data Integration
+     ↓
+Feature Engineering
+     ↓
+Data Validation
+     ↓
+Application Dataset
+     ↓
+Streamlit Application
+```
 
-# Datasets Used
+## 3. Raw Data
 
-## Missouri Botanical Garden (MoBot)
+Raw datasets are maintained in:
 
-Purpose
+```text
+data/raw/
+```
 
-- Native plant information
-- State distribution
-- Basic gardening attributes
+Original source data should generally not be modified directly.
 
----
+## 4. Processing Stage
 
-## Lady Bird Johnson Dataset
+The processing stage handles:
+- Cleaning
+- Standardization
+- Data integration
+- Taxonomy resolution
+- Feature engineering
+- Pollinator aggregation
+- Data validation
 
-Purpose
+## 5. Application Dataset
 
-- Growth habit
-- Water requirements
-- Light requirements
-- Bloom characteristics
-- Soil information
+The primary application dataset is:
 
----
+```text
+data/processed/plants_app.csv
+```
 
-## USDA PLANTS
+It contains plant information and recommendation fields required by the application.
 
-Purpose
+## 6. State Relationship Dataset
 
-- Accepted taxonomy
-- USDA symbols
-- Scientific name validation
-- Plant family
+The application also uses:
 
----
+```text
+data/processed/plant_states.csv
+```
 
-## Pollinator Dataset
+This dataset connects plants with native-state relationships through `plant_id`.
 
-Purpose
+## 7. Application Handoff
 
-- Observed plant-pollinator interactions
+The primary datasets handed from the data workflow to the application are:
 
----
-
-# Processing Performed
-
-The following preprocessing steps were completed.
-
-## Data Cleaning
-
-- Removed duplicate records
-- Standardized column names
-- Standardized text formatting
-- Normalized scientific names
-- Normalized USDA symbols
-
----
-
-## Feature Engineering
-
-Boolean recommendation features were created.
-
-Examples
-
-- supports_full_sun
-- supports_low_water
-- bloom_jul
-- supports_bee_observed
-
-These fields allow efficient filtering within the recommendation engine.
-
----
-
-## USDA Taxonomy Resolution
-
-Scientific names were validated using USDA accepted names.
-
-Synonyms were resolved through the USDA synonym crosswalk.
-
----
-
-## Pollinator Aggregation
-
-Pollinator observations were aggregated so that each plant appears only once in the final dataset.
-
----
-
-# Final Deliverables
-
-## plants_master.csv
-
-Complete integrated dataset.
-
-Purpose
-
-Long-term storage and future analytics.
-
----
-
-## plants_app.csv
-
-Application dataset.
-
-Purpose
-
-Primary dataset for the recommendation engine.
-
-The web application should load this dataset.
-
----
-
-## plant_states.csv
-
-Normalized plant-state lookup table.
-
-Purpose
-
-Future expansion and relational querying.
-
----
-
-## data_quality_report.csv
-
-Summary statistics describing dataset completeness.
-
----
-
-# Data Quality Summary
-
-Total native plants
-
-997
-
-Plants with Ladybird information
-
-817
-
-Plants with pollinator observations
-
-22
-
-Duplicate plant IDs
-
-0
-
-Missing scientific names
-
-0
-
----
-
-# Known Limitations
-
-The pollinator dataset contains limited exact-name matches with the native plant dataset.
-
-Only plants with exact scientific-name matches were merged.
-
-As a result, pollinator coverage should be interpreted as observed interactions within the available dataset rather than a complete representation of all pollinator relationships.
-
----
-
-# Recommendation Engine Usage
-
-The recommendation engine should load:
-
+```text
 plants_app.csv
+plant_states.csv
+```
 
-The application should filter using Boolean columns rather than text matching.
+## 8. Application Loading
 
-Example
+The application loads the processed files from the repository's processed-data directory.
 
+Conceptually:
+
+```python
+plants_df = pd.read_csv(app_data_path)
+states_df = pd.read_csv(state_data_path)
+```
+
+## 9. User Input Handoff
+
+The application collects:
+
+```text
+State
+Sunlight
+Water
+Pollinator
+```
+
+The interface maps these choices to dataset fields.
+
+Examples:
+
+```text
+Full Sun
+    ↓
 supports_full_sun
+```
 
+```text
+Low Water
+    ↓
 supports_low_water
+```
 
+```text
+Bee
+    ↓
 supports_bee_observed
+```
 
-This provides significantly faster filtering and simpler application logic.
+## 10. State Filtering
 
----
+```text
+Selected State
+      ↓
+plant_states.csv
+      ↓
+Matching plant_id values
+```
 
-# Future Enhancements
+The matching IDs are used against the main plant dataset.
 
-- Improve taxonomic matching
-- Add recommendation scoring
-- Expand support beyond the United States
+## 11. Recommendation Filtering
+
+```text
+Native Plants
+      ↓
+Sunlight Match
+      ↓
+Water Match
+      ↓
+Pollinator Match
+      ↓
+Final Recommendations
+```
+
+## 12. Output Handoff
+
+Filtered records are passed to the presentation layer.
+
+The application can display:
+- Plant image
+- Plant name
+- Scientific name
+- Plant family
+- Plant type
+- Hardiness zones
+- Maintenance
+- Soil information
+- Moisture
+- pH
+- Bloom information
+- Image source
+
+## 13. Validation Before Handoff
+
+```text
+[ ] Required files exist
+[ ] Required columns exist
+[ ] plant_id values are present
+[ ] State relationships are valid
+[ ] Recommendation fields contain expected values
+[ ] Plant names are available where expected
+[ ] Image URLs are valid where available
+[ ] No unexpected schema changes exist
+```
+
+## 14. Handoff Principle
+
+The application should consume validated processed data rather than raw external data.
+
+```text
+External Sources
+      ↓
+Data Processing
+      ↓
+Validated Processed Data
+      ↓
+Application
+```
+
+## 15. Future Improvements
+
+```text
+Data Collection
+      ↓
+Automated Processing
+      ↓
+Automated Validation
+      ↓
+Dataset Publication
+      ↓
+Application
+```
+
+Automation would reduce manual intervention and make future dataset updates more reproducible.
