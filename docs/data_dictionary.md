@@ -2,18 +2,14 @@
 
 ## Biodiversity & Native Planting Planner
 
-## 1. Purpose
-
-This document describes the important fields used by the Biodiversity & Native Planting Planner.
-
-Main application datasets:
+Primary application datasets:
 
 ```text
 data/processed/plants_app.csv
 data/processed/plant_states.csv
 ```
 
-## 2. Plant Identification Fields
+## Plant Identification
 
 | Field | Description |
 |---|---|
@@ -24,23 +20,23 @@ data/processed/plant_states.csv
 | `plant_family` | Botanical family |
 | `plant_type` | General plant type |
 
-## 3. Sunlight Fields
+## Sunlight
 
 | Field | Description |
 |---|---|
-| `supports_full_sun` | Indicates support for full-sun conditions |
-| `supports_part_shade` | Indicates support for part-shade conditions |
-| `supports_shade` | Indicates support for shade conditions |
+| `supports_full_sun` | Full-sun suitability |
+| `supports_part_shade` | Part-shade suitability |
+| `supports_shade` | Shade suitability |
 
-## 4. Water Fields
+## Water
 
 | Field | Description |
 |---|---|
-| `supports_low_water` | Indicates suitability for low-water conditions |
-| `supports_medium_water` | Indicates suitability for medium-water conditions |
-| `supports_high_water` | Indicates suitability for high-water conditions |
+| `supports_low_water` | Low-water suitability |
+| `supports_medium_water` | Medium-water suitability |
+| `supports_high_water` | High-water suitability |
 
-## 5. Pollinator Fields
+## Pollinators
 
 | Field | Description |
 |---|---|
@@ -52,15 +48,15 @@ data/processed/plant_states.csv
 | `supports_beetle_observed` | Beetle interaction observed |
 | `supports_wasp_observed` | Wasp interaction observed |
 
-## 6. Soil Fields
+## Soil
 
 | Field | Description |
 |---|---|
-| `soil_description` | Description of suitable soil conditions |
+| `soil_description` | Suitable soil description |
 | `soil_moisture` | Preferred soil moisture |
 | `soil_ph` | Soil pH information |
 
-## 7. Maintenance and Climate Fields
+## Maintenance and Climate
 
 | Field | Description |
 |---|---|
@@ -68,32 +64,49 @@ data/processed/plant_states.csv
 | `zone_min` | Minimum hardiness zone |
 | `zone_max` | Maximum hardiness zone |
 
-## 8. Bloom Fields
+## Bloom
 
 | Field | Description |
 |---|---|
 | `bloom_color` | Recorded bloom colors |
 | `bloom_jan` through `bloom_dec` | Monthly bloom indicators |
 
-The application converts monthly Boolean fields into a readable bloom-season description.
-
-## 9. Image Fields
+## Images
 
 | Field | Description |
 |---|---|
-| `image_url` | URL used for plant image display |
-| `image_source` | Source of the plant image |
+| `image_url` | Plant image URL |
+| `image_source` | Image source |
 
-## 10. State Dataset
+## State Dataset
 
 ### `plant_states.csv`
 
 | Field | Description |
 |---|---|
-| `plant_id` | Plant identifier matching the application dataset |
-| `native_state` | U.S. state associated with the plant's native distribution |
+| `plant_id` | Plant identifier |
+| `native_state` | U.S. state associated with native distribution |
 
-## 11. Dataset Relationship
+## Recommendation Fields
+
+```text
+plant_id
+supports_full_sun
+supports_part_shade
+supports_shade
+supports_low_water
+supports_medium_water
+supports_high_water
+supports_bee_observed
+supports_butterfly_observed
+supports_hummingbird_observed
+supports_moth_observed
+supports_fly_observed
+supports_beetle_observed
+supports_wasp_observed
+```
+
+## Dataset Relationship
 
 ```text
 plants_app.csv
@@ -105,47 +118,3 @@ plant_states.csv
       ▼
 Native State Relationship
 ```
-
-## 12. Recommendation Fields
-
-The recommendation engine primarily uses:
-
-```text
-plant_id
-
-supports_full_sun
-supports_part_shade
-supports_shade
-
-supports_low_water
-supports_medium_water
-supports_high_water
-
-supports_bee_observed
-supports_butterfly_observed
-supports_hummingbird_observed
-supports_moth_observed
-supports_fly_observed
-supports_beetle_observed
-supports_wasp_observed
-```
-
-## 13. Data Types
-
-Recommendation fields are expected to behave as Boolean values:
-
-```text
-True
-False
-```
-
-Descriptive plant fields are generally text. Numeric fields such as hardiness zones may be represented numerically.
-
-## 14. Dictionary Maintenance
-
-Update this document whenever:
-- A new application field is introduced.
-- An existing field changes meaning.
-- A new recommendation criterion is added.
-- Dataset structure changes.
-- A new external source is integrated.

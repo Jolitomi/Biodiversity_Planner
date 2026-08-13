@@ -3,13 +3,14 @@
 
 **Team:** Vanguard Strategists  
 **Program:** Grow with Google BUILD Stage  
-**UN SDG:** Goal 15 — Life on Land
+**UN SDG:** Goal 15 — Life on Land  
+**Live Application:** [https://biodiversityplanner.streamlit.app/](https://biodiversityplanner.streamlit.app/)
 
 ## 1. Project Background
 
-Urban gardening provides opportunities to support biodiversity within developed environments. However, choosing suitable native plants can be difficult because information about native status, growing requirements, taxonomy, and pollinator relationships is often distributed across multiple sources.
+Urban gardening can provide opportunities to support biodiversity, but selecting suitable native plants can be difficult because information about native distribution, growing requirements, taxonomy, and pollinator relationships is distributed across multiple sources.
 
-The Biodiversity & Native Planting Planner was developed to simplify this process by combining plant and ecological information into a recommendation application.
+The project combines these sources into structured datasets and presents the information through an interactive recommendation application.
 
 ## 2. Problem Statement
 
@@ -17,180 +18,93 @@ Urban gardeners lack simple, automated tools that help them identify native plan
 
 ## 3. Project Goal
 
-The goal is to create a practical tool that allows users to discover native plants based on their location and gardening conditions.
+Provide a simple, practical tool that helps users discover native plants based on location and gardening conditions.
 
-## 4. Project Objectives
+## 4. Objectives
 
 1. Collect relevant plant and ecological data.
-2. Clean and standardize information from different sources.
-3. Integrate the datasets.
-4. Create application-ready recommendation features.
-5. Validate the processed data.
-6. Develop a recommendation engine.
-7. Build an interactive Streamlit application.
-8. Present plant information clearly.
-9. Support UN SDG 15.
+2. Clean and standardize information from multiple sources.
+3. Integrate plant, distribution, taxonomy, and pollinator information.
+4. Engineer application-ready recommendation features.
+5. Validate processed datasets.
+6. Build a deterministic recommendation engine.
+7. Develop an interactive web application.
+8. Refine UI/UX for desktop and mobile.
+9. Deploy the application for public demonstration.
+10. Support UN SDG 15.
 
-## 5. Project Scope
-
-The current application focuses on the United States. Users select state, sunlight, water availability and preferred pollinator. The system returns plants matching those criteria.
-
-## 6. Target Users
-
-- Urban gardeners
-- Home gardeners
-- Beginner gardeners
-- Native plant enthusiasts
-- Pollinator-conscious gardeners
-- People interested in biodiversity-friendly landscaping
-
-## 7. Solution Architecture
+## 5. User Flow
 
 ```text
-External Data
-      ↓
-Data Processing
-      ↓
-Application Dataset
-      ↓
-Recommendation Engine
-      ↓
-Streamlit Interface
-      ↓
-User Recommendations
+State → Sunlight → Water → Preferred Pollinator → Recommendations
 ```
 
-## 8. Data Processing
+## 6. Recommendation Logic
 
-The workflow includes data collection, cleaning, standardization, taxonomy resolution, feature engineering and validation.
+A plant is considered a match when it satisfies the selected state, sunlight, water, and pollinator criteria.
 
-## 9. Recommendation Logic
+## 7. UI/UX Contribution
 
-The recommendation engine uses rule-based filtering:
+UI/UX refinement focused on information hierarchy, user flow, compact results, readability, responsive behavior, mobile usability, and reducing unnecessary vertical scrolling.
 
-```text
-Selected State
-      ↓
-Native Plant IDs
-      ↓
-Sunlight Filter
-      ↓
-Water Filter
-      ↓
-Pollinator Filter
-      ↓
-Final Recommendations
-```
+## 8. Team Contributions
 
-## 10. Application Architecture
+### Ayotomiwa Omojola — Data Analytics & UI/UX Design
+Data sourcing, cleaning, standardization, integration, feature engineering, validation, application-ready datasets, UI/UX design, user-flow refinement, information hierarchy, and responsive interface considerations.
 
-```text
-Streamlit Interface
-        │
-        ├── User Inputs
-        ├── Dataset Loading
-        ├── Recommendation Logic
-        └── Results Display
-                 │
-                 ▼
-          Plant Information
-```
+### Hanan Kassim — Advanced Data Analytics
+Data analysis, dataset validation, analytical review, and data quality support.
 
-## 11. Dataset Loading
+### Adrian Denis — IT Automation & Application Development
+Recommendation engine, Python/Streamlit application development, application logic, user-input filtering, data-to-interface integration, and deployment.
 
-The application loads:
+### Favour Asomba — Cybersecurity
+Security considerations, input validation review, repository security, and deployment/security review.
+
+## 9. Data Processing
+
+The workflow includes source collection, cleaning, standardization, taxonomy resolution, dataset integration, pollinator aggregation, feature engineering, and validation.
+
+## 10. Application Datasets
+
+The application depends on:
 
 ```text
 data/processed/plants_app.csv
 data/processed/plant_states.csv
 ```
 
-## 12. User Flow
+These files must remain available at runtime.
 
-```text
-Open Application
-      ↓
-Select State
-      ↓
-Select Sunlight
-      ↓
-Select Water
-      ↓
-Select Pollinator
-      ↓
-Generate Recommendations
-      ↓
-View Plant Results
-```
+## 11. Deployment
 
-## 13. Plant Result Information
+The application is deployed using Streamlit.
 
-Depending on availability:
-- Plant name
-- Scientific name
-- Family
-- Plant type
-- Hardiness zones
-- Maintenance
-- Soil description
-- Soil moisture
-- Soil pH
-- Bloom color
-- Bloom season
-- Plant image
-- Image source
+**Live application:** [https://biodiversityplanner.streamlit.app/](https://biodiversityplanner.streamlit.app/)
 
-## 14. Empty Results
+## 12. Current Status
 
-If no plants satisfy the selected criteria, the application informs the user and encourages them to adjust their conditions.
+The main data pipeline, recommendation application, UI/UX refinement, and deployment have been completed.
 
-## 15. Data Quality
-
-The project considers:
-- Completeness
-- Consistency
-- Validity
-- Uniqueness
-- Referential integrity
-
-## 16. Technology Stack
-
-| Technology | Purpose |
-|---|---|
-| Python | Core programming |
-| Pandas | Data manipulation |
-| NumPy | Data processing |
-| Streamlit | Web application |
-| Jupyter Notebook | Data analysis |
-| iNaturalist API | Plant images |
-
-## 17. Testing
-
-Testing focuses on dataset loading, state filtering, sunlight filtering, water filtering, pollinator filtering, recommendation output, empty results, image display, plant details and responsive behavior.
-
-## 18. Limitations
+## 13. Limitations
 
 - U.S. state-level geographic scope.
 - Some plant records may be incomplete.
-- Some plants may not have images.
-- Recommendations use deterministic filtering.
-- External data quality affects results.
+- Image availability is not universal.
+- Recommendations are deterministic rather than ranked.
+- Results depend on underlying data quality.
 
-## 19. Future Development
+## 14. Future Improvements
 
 - Recommendation ranking
-- County-level recommendations
 - Interactive maps
+- County-level recommendations
 - Seasonal planting guidance
-- Garden-size recommendations
+- Expanded pollinator coverage
 - Expanded geographic coverage
-- Biodiversity impact scoring
-- Advanced search
+- Biodiversity impact indicators
+- Advanced plant search
 
-## 20. SDG 15 Alignment
+## 15. SDG 15 Alignment
 
-The project supports **UN SDG 15 — Life on Land** by helping users identify native plants and make biodiversity-conscious planting decisions.
-
-## 21. Conclusion
-
-The project demonstrates how public ecological datasets can be transformed into an interactive environmental application combining data collection, analytics, processing, recommendation logic and a Streamlit interface.
+The project supports **UN SDG 15 — Life on Land** by making native-plant information more accessible and encouraging biodiversity-conscious planting decisions.

@@ -4,11 +4,7 @@
 
 **Team:** Vanguard Strategists
 
-## 1. Purpose
-
-This document describes the external sources used by the project and the role each source plays in the data pipeline.
-
-## 2. Source Overview
+## 1. Source Overview
 
 | Source | Primary Purpose |
 |---|---|
@@ -18,38 +14,23 @@ This document describes the external sources used by the project and the role ea
 | Pollinator Interaction Dataset | Pollinator observations |
 | iNaturalist API | Plant images |
 
-## 3. Missouri Botanical Garden
+## 2. Missouri Botanical Garden
 
-Information from the Missouri Botanical Garden contributes to understanding plant distribution and native status.
+Contributes plant distribution and native-status relationships represented through `plant_id` and `native_state`.
 
-The processed relationship is represented using:
+## 3. Lady Bird Johnson Wildflower Center
 
-```text
-plant_id
-native_state
-```
+Contributes gardening characteristics including sunlight, water, soil, moisture, pH, maintenance, bloom characteristics, and plant type.
 
-These relationships are stored in:
+## 4. USDA PLANTS Database
 
-```text
-data/processed/plant_states.csv
-```
+Supports botanical taxonomy and standardized plant identification.
 
-## 4. Lady Bird Johnson Wildflower Center
+## 5. Pollinator Interaction Dataset
 
-This source contributes plant and gardening characteristics such as sunlight requirements, water requirements, soil conditions, soil moisture, soil pH, maintenance, bloom characteristics and plant type.
+Provides observed relationships between plants and pollinator groups.
 
-## 5. USDA PLANTS Database
-
-The USDA PLANTS Database supports botanical taxonomy and standardized plant identification.
-
-Relevant information can include scientific names, common names, classifications and plant families.
-
-## 6. Pollinator Interaction Dataset
-
-Pollinator interaction data provides information about observed relationships between plants and pollinator groups.
-
-Application-ready fields include:
+Application fields include:
 
 ```text
 supports_bee_observed
@@ -61,11 +42,11 @@ supports_beetle_observed
 supports_wasp_observed
 ```
 
-## 7. iNaturalist
+## 6. iNaturalist
 
-iNaturalist is used as a source of plant images. The application can display the plant image and image source.
+Used for plant image sourcing. Current project documentation records **894 out of 997 species (89.7%)** with image coverage.
 
-## 8. Data Integration
+## 7. Data Integration
 
 ```text
 Native Distribution
@@ -81,37 +62,10 @@ Image Metadata
 Integrated Plant Dataset
 ```
 
-## 9. Data Cleaning
+## 8. Data Quality
 
-Processing may include:
-- Duplicate removal
-- Missing-value handling
-- Name standardization
-- Data-type conversion
-- Category normalization
-- Identifier matching
-- Formatting corrections
+The project considers completeness, consistency, validity, uniqueness, referential integrity, and image availability.
 
-## 10. Data Quality
+## 9. Attribution
 
-The project considers completeness, consistency, validity, uniqueness, relationship integrity and image availability.
-
-## 11. Attribution
-
-The project acknowledges the organizations and contributors whose public data and resources support this educational project.
-
-Any future redistribution or commercial use should comply with the relevant terms, licensing and attribution requirements of the original sources.
-
-## 12. Summary
-
-```text
-Where is the plant native?
-        +
-How does it grow?
-        +
-Which pollinators interact with it?
-        +
-What does it look like?
-        ↓
-Useful plant recommendation
-```
+The project acknowledges the organizations and contributors whose public data and resources support this educational project. Applicable source licensing and attribution requirements should be followed.

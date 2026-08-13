@@ -6,20 +6,7 @@
 **Program:** Grow with Google BUILD Stage  
 **SDG:** Goal 15 — Life on Land
 
-## 1. Overview
-
-The Biodiversity & Native Planting Planner uses a multi-stage data pipeline to transform information from multiple sources into structured datasets used by the recommendation application.
-
-The pipeline separates:
-1. Data collection
-2. Data cleaning
-3. Data standardization
-4. Data integration
-5. Feature engineering
-6. Data validation
-7. Application delivery
-
-## 2. High-Level Architecture
+## 1. High-Level Architecture
 
 ```text
 ┌─────────────────────────────┐
@@ -31,24 +18,20 @@ The pipeline separates:
 │ Pollinator Dataset          │
 │ iNaturalist API             │
 └──────────────┬──────────────┘
-               │
-               ▼
+               ↓
 ┌─────────────────────────────┐
 │       Raw Data Layer        │
-│          data/raw/          │
 └──────────────┬──────────────┘
-               │
-               ▼
+               ↓
 ┌─────────────────────────────┐
 │      Cleaning Layer         │
 ├─────────────────────────────┤
-│ Duplicate Removal            │
-│ Missing-Value Handling       │
-│ Name Standardization         │
-│ Type Conversion              │
+│ Duplicate Removal           │
+│ Missing-Value Handling      │
+│ Name Standardization        │
+│ Type Conversion             │
 └──────────────┬──────────────┘
-               │
-               ▼
+               ↓
 ┌─────────────────────────────┐
 │   Integration & Processing  │
 ├─────────────────────────────┤
@@ -57,8 +40,7 @@ The pipeline separates:
 │ State Relationships         │
 │ Pollinator Aggregation      │
 └──────────────┬──────────────┘
-               │
-               ▼
+               ↓
 ┌─────────────────────────────┐
 │    Feature Engineering      │
 ├─────────────────────────────┤
@@ -67,90 +49,33 @@ The pipeline separates:
 │ Pollinator Features         │
 │ Bloom Features              │
 └──────────────┬──────────────┘
-               │
-               ▼
+               ↓
 ┌─────────────────────────────┐
 │      Data Validation        │
-├─────────────────────────────┤
-│ Completeness                │
-│ Consistency                 │
-│ Validity                    │
-│ Relationships               │
 └──────────────┬──────────────┘
-               │
-               ▼
+               ↓
 ┌─────────────────────────────┐
 │      Processed Data         │
 ├─────────────────────────────┤
+│ plants_master.csv           │
 │ plants_app.csv              │
 │ plant_states.csv            │
 └──────────────┬──────────────┘
-               │
-               ▼
+               ↓
 ┌─────────────────────────────┐
 │    Recommendation Engine    │
 └──────────────┬──────────────┘
-               │
-               ▼
+               ↓
 ┌─────────────────────────────┐
 │    Streamlit Application    │
+└──────────────┬──────────────┘
+               ↓
+┌─────────────────────────────┐
+│      Live Deployment        │
 └─────────────────────────────┘
 ```
 
-## 3. External Data Layer
-
-```text
-Native Distribution
-        +
-Gardening Characteristics
-        +
-Taxonomy
-        +
-Pollinator Interactions
-        +
-Plant Images
-        ↓
-Integrated Plant Information
-```
-
-## 4. Raw Data Layer
-
-Raw source files are stored under:
-
-```text
-data/raw/
-```
-
-## 5. Cleaning Layer
-
-The cleaning stage addresses:
-- Duplicate records
-- Missing values
-- Inconsistent names
-- Inconsistent categories
-- Formatting differences
-- Incorrect data types
-
-## 6. Standardization Layer
-
-Standardization makes data from different sources compatible.
-
-This can include:
-- Plant-name normalization
-- State-name normalization
-- Identifier standardization
-- Category normalization
-- Data-type conversion
-
-## 7. Integration Layer
-
-The integration layer combines information from different datasets using plant identifiers and standardized plant information.
-
-## 8. Taxonomy Layer
-
-Taxonomic information supports consistent plant identification and helps prevent naming differences from creating duplicate conceptual records.
-
-## 9. Feature Engineering Layer
+## 2. Feature Engineering
 
 ### Sunlight
 
@@ -180,17 +105,11 @@ supports_beetle_observed
 supports_wasp_observed
 ```
 
-## 10. Validation Layer
+## 3. Validation
 
-Processed data should be checked for:
-- Completeness
-- Consistency
-- Validity
-- Uniqueness
-- Relationship integrity
-- Expected field types
+Processed data is reviewed for completeness, consistency, validity, uniqueness, relationship integrity, and expected field types.
 
-## 11. Processed Data Layer
+## 4. Processed Data Layer
 
 The application relies primarily on:
 
@@ -199,22 +118,9 @@ data/processed/plants_app.csv
 data/processed/plant_states.csv
 ```
 
-`plants_app.csv` contains plant-level information and recommendation features.
+The broader development workflow also produces `plants_master.csv` and a data-quality report.
 
-`plant_states.csv` contains plant-to-state relationships.
-
-## 12. Recommendation Layer
-
-The recommendation engine receives:
-
-```text
-State
-Sunlight
-Water
-Pollinator
-```
-
-and applies filtering logic:
+## 5. Recommendation Layer
 
 ```text
 Selected State
@@ -230,9 +136,10 @@ Pollinator Match
 Recommendations
 ```
 
-## 13. Application Layer
+## 6. Presentation Layer
 
 The Streamlit application handles:
+
 - User input
 - Dataset loading
 - Recommendation filtering
@@ -240,8 +147,15 @@ The Streamlit application handles:
 - Plant details
 - Image display
 - Empty-result handling
+- Responsive presentation
 
-## 14. Separation of Responsibilities
+## 7. Deployment
+
+The completed application is deployed through Streamlit.
+
+**Live application:** https://biodiversityplanner.streamlit.app/
+
+## 8. Architecture Principle
 
 ```text
 Data Layer
@@ -251,20 +165,11 @@ Validated Dataset
 Recommendation Layer
     ↓
 Presentation Layer
+    ↓
+Deployment
 ```
 
-This separation allows data processing and application development to evolve independently.
-
-## 15. Reproducibility
-
-The repository contains processing resources and documentation so team members and future developers can understand:
-- Where data originated
-- How data was processed
-- How datasets are connected
-- Which fields the application uses
-- How recommendations are generated
-
-## 16. Future Architecture
+## 9. Future Architecture
 
 ```text
 Scheduled Data Collection
@@ -278,26 +183,4 @@ Automated Validation
 Dataset Versioning
           ↓
 Application Update
-```
-
-## 17. Summary
-
-```text
-Multiple Sources
-       ↓
-Clean
-       ↓
-Standardize
-       ↓
-Integrate
-       ↓
-Engineer Features
-       ↓
-Validate
-       ↓
-Application Dataset
-       ↓
-Recommendation Engine
-       ↓
-Native Plant Planner
 ```
