@@ -1,129 +1,120 @@
-# Biodiversity & Native Planting Planner
-## Data Dictionary
+# 📖 Data Dictionary
 
-### Dataset
-**plants_app.csv**
+## Biodiversity & Native Planting Planner
 
-This dataset is the primary dataset used by the recommendation engine. Each row represents one native plant.
+Primary application datasets:
 
----
+```text
+data/processed/plants_app.csv
+data/processed/plant_states.csv
+```
 
-## Identity
+## Plant Identification
 
-| Column | Description |
-|---------|-------------|
-| plant_id | Unique identifier for each plant |
-| scientific_name | Accepted scientific name |
-| common_name | Common plant name |
-| display_name | Preferred display name shown in the application |
-| plant_family | Botanical family |
-
----
-
-## Geographic Information
-
-| Column | Description |
-|---------|-------------|
-| native_states | Pipe-separated list of U.S. states where the plant is native |
-
-Example
-
-Texas | Oklahoma | Louisiana
-
----
-
-## Growth Characteristics
-
-| Column | Description |
-|---------|-------------|
-| growth_habit | Tree, Shrub, Herb, Vine, etc. |
-| plant_type | General plant category |
-| zone_min | Minimum USDA hardiness zone |
-| zone_max | Maximum USDA hardiness zone |
-| maintenance | Maintenance requirement |
-| soil_description | Preferred soil description |
-| soil_moisture | Soil moisture preference |
-| soil_ph | Preferred soil pH |
-
----
+| Field | Description |
+|---|---|
+| `plant_id` | Identifier used to connect plant records |
+| `display_name` | Plant name displayed by the application |
+| `common_name` | Common plant name |
+| `scientific_name` | Scientific botanical name |
+| `plant_family` | Botanical family |
+| `plant_type` | General plant type |
 
 ## Sunlight
 
-| Column | Description |
-|---------|-------------|
-| supports_full_sun | Suitable for full sun |
-| supports_part_shade | Suitable for partial shade |
-| supports_shade | Suitable for shade |
-
----
+| Field | Description |
+|---|---|
+| `supports_full_sun` | Full-sun suitability |
+| `supports_part_shade` | Part-shade suitability |
+| `supports_shade` | Shade suitability |
 
 ## Water
 
-| Column | Description |
-|---------|-------------|
-| supports_low_water | Suitable for low water |
-| supports_medium_water | Suitable for medium water |
-| supports_high_water | Suitable for high water |
+| Field | Description |
+|---|---|
+| `supports_low_water` | Low-water suitability |
+| `supports_medium_water` | Medium-water suitability |
+| `supports_high_water` | High-water suitability |
 
----
+## Pollinators
 
-## Bloom Information
+| Field | Description |
+|---|---|
+| `supports_bee_observed` | Bee interaction observed |
+| `supports_butterfly_observed` | Butterfly interaction observed |
+| `supports_hummingbird_observed` | Hummingbird interaction observed |
+| `supports_moth_observed` | Moth interaction observed |
+| `supports_fly_observed` | Fly interaction observed |
+| `supports_beetle_observed` | Beetle interaction observed |
+| `supports_wasp_observed` | Wasp interaction observed |
 
-| Column | Description |
-|---------|-------------|
-| bloom_color | Flower color |
+## Soil
 
-Monthly bloom indicators
+| Field | Description |
+|---|---|
+| `soil_description` | Suitable soil description |
+| `soil_moisture` | Preferred soil moisture |
+| `soil_ph` | Soil pH information |
 
-- bloom_jan
-- bloom_feb
-- bloom_mar
-- bloom_apr
-- bloom_may
-- bloom_jun
-- bloom_jul
-- bloom_aug
-- bloom_sep
-- bloom_oct
-- bloom_nov
-- bloom_dec
+## Maintenance and Climate
 
-Each column contains:
+| Field | Description |
+|---|---|
+| `maintenance` | Plant maintenance requirement |
+| `zone_min` | Minimum hardiness zone |
+| `zone_max` | Maximum hardiness zone |
 
-- TRUE → blooms during that month
-- FALSE → does not bloom
+## Bloom
 
----
-
-## Pollinator Support
-
-| Column | Description |
-|---------|-------------|
-| supports_bee_observed | Bee interactions observed |
-| supports_butterfly_observed | Butterfly interactions observed |
-| supports_hummingbird_observed | Hummingbird interactions observed |
-| supports_moth_observed | Moth interactions observed |
-| supports_fly_observed | Fly interactions observed |
-| supports_beetle_observed | Beetle interactions observed |
-| supports_wasp_observed | Wasp interactions observed |
-
-These fields indicate observations from the pollinator dataset and should not be interpreted as exhaustive ecological relationships.
-
----
+| Field | Description |
+|---|---|
+| `bloom_color` | Recorded bloom colors |
+| `bloom_jan` through `bloom_dec` | Monthly bloom indicators |
 
 ## Images
 
-| Column | Description |
-|---------|-------------|
-| image_url | URL of plant image |
-| image_source | Source of plant image (e.g., iNaturalist) |
+| Field | Description |
+|---|---|
+| `image_url` | Plant image URL |
+| `image_source` | Image source |
 
+## State Dataset
 
----
+### `plant_states.csv`
 
-## Dataset Flags
+| Field | Description |
+|---|---|
+| `plant_id` | Plant identifier |
+| `native_state` | U.S. state associated with native distribution |
 
-| Column | Description |
-|---------|-------------|
-| has_ladybird_data | Indicates whether gardening attributes were available |
-| has_pollinator_data | Indicates whether pollinator observations were available |
+## Recommendation Fields
+
+```text
+plant_id
+supports_full_sun
+supports_part_shade
+supports_shade
+supports_low_water
+supports_medium_water
+supports_high_water
+supports_bee_observed
+supports_butterfly_observed
+supports_hummingbird_observed
+supports_moth_observed
+supports_fly_observed
+supports_beetle_observed
+supports_wasp_observed
+```
+
+## Dataset Relationship
+
+```text
+plants_app.csv
+      │
+      │ plant_id
+      ▼
+plant_states.csv
+      │
+      ▼
+Native State Relationship
+```
