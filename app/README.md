@@ -1,14 +1,36 @@
-How to test this locally:
+## 🚀 Running the Application
 
-1. Pull down the latest branch:
-git fetch origin
-git checkout feature/backend-engine
+### Clone the Repository
 
-2. Install the required dependencies:
-Make sure you have Pandas installed in your environment:
-pip install pandas
+```bash
+git clone https://github.com/Jolitomi/Biodiversity_Planner.git
+cd Biodiversity_Planner
+```
 
-3. Run the application:
-You must run this from the absolute root of the repository (Biodiversity_Planner/) so the relative file paths to the data/processed/ folder map correctly:
+### Create a Virtual Environment
 
-python app/app.py
+#### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+#### macOS/Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Launch the Application
+
+```bash
+streamlit run app/app.py
+```
