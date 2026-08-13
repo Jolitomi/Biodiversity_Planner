@@ -262,3 +262,32 @@ The project was developed as a cross-functional team combining data analytics, a
 - `docs/data_dictionary.md`
 - `docs/data_handoff.md`
 - `docs/data_pipeline_architecture.md`
+
+## How to Run / View the Project
+
+### Prerequisites
+- Python 3.9+
+- pip
+
+### Setup
+
+1. Clone the repository:
+```bash
+   git clone https://github.com/Jolitomi/Biodiversity_Planner.git
+   cd Biodiversity_Planner
+```
+
+2. Install dependencies:
+```bash
+   pip install pandas streamlit
+```
+
+3. Run the application from the repository root (required — the app uses relative paths to `data/processed/`):
+```bash
+   streamlit run app/app.py
+```
+
+4. Your browser should open automatically. If not, go to the Local URL shown in the terminal (typically `http://localhost:8501`).
+
+### Data
+The application-ready dataset lives at `data/processed/plants_app.csv`.
