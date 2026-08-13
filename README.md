@@ -1,344 +1,264 @@
 # 🌱 Biodiversity & Native Planting Planner
 
-**UN Sustainable Development Goal 15 – Life on Land**
+### UN Sustainable Development Goal 15 — Life on Land
 
-A data-driven recommendation system that helps urban gardeners discover native plants suitable for their growing conditions while supporting local biodiversity and pollinators.
+**Team:** Vanguard Strategists  
+**Program:** Grow with Google BUILD Stage  
+**Project Topic:** Biodiversity & Native Planting Planner
 
----
+## 🌿 Project Overview
 
-# Project Overview
+The Biodiversity & Native Planting Planner is a data-driven web application designed to help gardeners discover native plants suitable for their local gardening conditions while supporting local pollinators.
 
-The Biodiversity & Native Planting Planner is a web-based recommendation tool designed to encourage sustainable urban gardening by helping users select native plants based on their gardening conditions.
-
-The application recommends plants using factors such as:
-
+Users select:
+- 📍 U.S. State
 - ☀️ Sunlight availability
 - 💧 Water availability
-- 🌿 Available growing space
-- 🦋 Preferred pollinators
-- 📍 Native U.S. state distribution
+- 🦋 Preferred pollinator
 
-The project integrates multiple public datasets into a unified recommendation dataset that powers the application.
+The system filters the processed plant dataset and presents matching native plant recommendations.
 
----
+## 🎯 Problem Statement
 
-# Project Objectives
+Urban gardeners often lack simple, automated tools that help them identify native plant species suitable for their local gardening conditions while supporting local pollinator populations.
 
-The project aims to:
+## 💡 Our Solution
 
-- Promote native plant gardening
-- Support pollinator conservation
-- Encourage biodiversity in urban environments
-- Simplify plant selection for home gardeners
-- Demonstrate practical data engineering and analytics techniques
+The project combines information from multiple public data sources into structured, application-ready datasets and uses them in a Streamlit recommendation application.
 
----
+```text
+Public Data Sources
+        ↓
+Data Collection
+        ↓
+Data Cleaning
+        ↓
+Data Standardization
+        ↓
+Data Integration
+        ↓
+Feature Engineering
+        ↓
+Data Validation
+        ↓
+Application Dataset
+        ↓
+Recommendation Engine
+        ↓
+Streamlit Application
+```
 
-# Team
+## 🎯 Project Objectives
 
-## Team Name
+- Promote the use of native plants.
+- Encourage biodiversity-friendly gardening.
+- Support local pollinators.
+- Make plant selection easier for gardeners.
+- Demonstrate practical data analytics.
+- Combine data analytics with application development.
+- Support UN SDG 15 — Life on Land.
 
-**Vanguard Strategists**
+## 👥 Team — Vanguard Strategists
 
----
+| Team Member | Grow with Google Track | Contribution |
+|---|---|---|
+| Ayotomiwa Omojola | Data Analytics | Data sourcing, cleaning, integration, feature engineering and analytics |UI/UX design and application interface development
+| Hanan Kassim | Advanced Data Analytics | Data analysis, validation and dataset development | Data Sourcing
+| Adrian Denis | IT Automation with Python | Application development, automation and recommendation logic |
+| Favour Asomba | Cybersecurity | Security considerations and review |
 
-## Data Analytics
+## 🌎 Geographic Scope
 
-- Ayotomiwa
-- Hanan
+The current project focuses on the United States and uses state-level native plant relationships.
 
-### Responsibilities
+## 🔎 Application Features
 
-- Dataset sourcing
-- Data cleaning
-- Feature engineering
-- Dataset integration
-- Master dataset creation
-- Data validation
+### State Selection
+Users select a U.S. state from the available state data.
 
----
+### ☀️ Sunlight Selection
+- Full Sun
+- Part Shade
+- Shade
 
-## IT Automation
+### 💧 Water Selection
+- Low Water
+- Medium Water
+- High Water
 
-- Adrian
+### 🦋 Pollinator Selection
+- Bee
+- Butterfly
+- Hummingbird
+- Moth
+- Fly
+- Beetle
+- Wasp
 
-### Responsibilities
+### 🌱 Plant Recommendations
 
-- Recommendation engine
-- Backend development
-- Application logic
-- User input filtering
+The recommendation engine identifies plants that:
+1. Are associated with the selected state.
+2. Match the selected sunlight condition.
+3. Match the selected water condition.
+4. Match the selected pollinator condition.
 
----
+### 🌿 Plant Information
 
-## Cybersecurity
+Depending on data availability, results can include:
+- Plant name
+- Scientific name
+- Plant family
+- Plant type
+- Hardiness zones
+- Maintenance
+- Soil description
+- Soil moisture
+- Soil pH
+- Bloom color
+- Bloom season
+- Plant image
+- Image source
 
-- Favour
+## 🧠 Recommendation Engine
 
-### Responsibilities
+The current recommendation system uses deterministic filtering rather than machine learning.
 
-- Repository security
-- Input validation
-- Secure deployment
-- Security review
+```text
+Selected State
+      ↓
+Native Plant IDs
+      ↓
+Sunlight Match
+      ↓
+Water Match
+      ↓
+Pollinator Match
+      ↓
+Matching Plants
+```
 
----
+## 🖥️ Technology Stack
 
-# Project Scope
+| Technology | Purpose |
+|---|---|
+| Python | Core programming language |
+| Pandas | Data manipulation |
+| NumPy | Data processing |
+| Streamlit | Web application |
+| Jupyter Notebook | Data analysis and exploration |
+| iNaturalist API | Plant image sourcing |
 
-The recommendation engine focuses on the **United States**.
 
-Reasons:
+## 🚀 Running the Application
 
-- Native plants differ by region.
-- Reliable public datasets are available.
-- Scope is manageable.
-- Enables accurate recommendations.
+### Clone the Repository
 
----
+```bash
+git clone https://github.com/Jolitomi/Biodiversity_Planner.git
+cd Biodiversity_Planner
+```
 
-# Data Sources
+### Create a Virtual Environment
 
-The project integrates the following datasets.
+#### Windows
 
-| Dataset | Purpose |
-|----------|---------|
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+#### macOS/Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Launch the Application
+
+```bash
+streamlit run app/app.py
+```
+
+## 📊 Data Sources
+
+| Source | Purpose |
+|---|---|
 | Missouri Botanical Garden | Native plant distribution |
-| Lady Bird Johnson Wildflower Center | Gardening characteristics |
+| Lady Bird Johnson Wildflower Center | Plant and gardening characteristics |
 | USDA PLANTS Database | Botanical taxonomy |
 | Pollinator Interaction Dataset | Pollinator observations |
 | iNaturalist API | Plant images |
 
-See:
+See the supporting documentation in `docs/`.
 
-**docs/data_source_guide.md**
-
-for complete details.
-
----
-
-# Data Pipeline
+## 🔄 Data Pipeline
 
 ```text
+External Data Sources
+        ↓
 Raw Data
-    │
-    ▼
+        ↓
 Cleaning
-    │
-    ▼
+        ↓
 Standardization
-    │
-    ▼
+        ↓
+Integration
+        ↓
 Feature Engineering
-    │
-    ▼
-USDA Taxonomy Resolution
-    │
-    ▼
-Pollinator Aggregation
-    │
-    ▼
-Coverage Validation
-    │
-    ▼
-plants_master.csv
-    │
-    ▼
-plants_app.csv
-    │
-    ▼
+        ↓
+Validation
+        ↓
+Processed Datasets
+        ↓
 Recommendation Engine
+        ↓
+Streamlit Application
 ```
 
----
+## 📱 Responsive Interface
 
-# Repository Structure
+The application is designed to work across desktop and mobile screen sizes, with emphasis on clear hierarchy, compact information presentation, touch-friendly controls and readability.
 
-```text
-biodiversity-planner/
+## ⚠️ Limitations
 
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── review/
-│
-├── notebooks/
-│
-├── docs/
-│   ├── data_source_guide.md
-│   ├── data_dictionary.md
-│   ├── data_handoff.md
-│   └── data_pipeline_architecture.png
-│
-├── app/
-│
-├── requirements.txt
-│
-└── README.md
-```
+- Current geographic scope is U.S. states.
+- Some plant records may have incomplete information.
+- Image availability depends on the underlying image data.
+- Recommendations currently use deterministic filtering.
+- The application depends on the quality and availability of external data.
 
----
-
-# Final Datasets
-
-## plants_master.csv
-
-Complete integrated dataset.
-
-Contains:
-
-- All merged source data
-- Taxonomy
-- Gardening information
-- Pollinator observations
-
-Used for:
-
-- Analytics
-- Maintenance
-- Future enhancements
-
----
-
-## plants_app.csv
-
-Application-ready dataset.
-
-Contains:
-
-- Recommendation features
-- Engineered Boolean columns
-- Display information
-- Plant image URLs (89.7% coverage, 894/997 species, sourced from iNaturalist)
-
-Used by:
-
-- Recommendation engine
-- Web application
-
----
-
-## plant_states.csv
-
-Normalized state lookup table.
-
----
-
-## data_quality_report.csv
-
-Validation summary.
-
----
-
-# Technologies
-
-- Python
-- Pandas
-- NumPy
-- Jupyter Notebook
-- iNaturalist API — plant image sourcing
-
-Future:
-
-- Streamlit / Flask
-
----
-
-# Application Workflow
-
-```text
-User selects:
-
-State
-↓
-
-Sunlight
-↓
-
-Water
-
-↓
-
-Preferred Pollinator
-
-↓
-
-Recommendation Engine
-
-↓
-
-Recommended Native Plants
-```
-
----
-
-# Current Status
-
-✅ Dataset sourcing completed
-
-✅ Data cleaning completed
-
-✅ Feature engineering completed
-
-✅ USDA taxonomy integration completed
-
-✅ Pollinator aggregation completed
-
-✅ Master dataset completed
-
-✅ Application dataset completed
-
-✅ Plant image integration completed (894/997 species, 89.7% coverage)
-
-🔄 Web application development in progress
-
----
-
-# Future Improvements
+## 🔮 Future Improvements
 
 - Recommendation ranking
-- Interactive map
 - County-level recommendations
-- Expanded pollinator coverage
-- International support
+- Interactive maps
+- Seasonal planting recommendations
+- Garden-size recommendations
+- Expanded geographic coverage
+- Biodiversity impact indicators
+- More detailed pollinator information
+- Advanced plant search
 
----
+## 🌍 UN SDG 15 — Life on Land
 
-# Documentation
+The project supports **United Nations Sustainable Development Goal 15: Life on Land** by making it easier for users to discover native plants and make biodiversity-conscious planting decisions.
 
-Project documentation is available in the **docs/** folder.
+## 🤝 Collaboration
 
-- Data Source Guide
-- Data Dictionary
-- Data Handoff Guide
-- Architecture Diagram
+The project was developed as a cross-functional team combining data analytics, advanced analytics, application development, cybersecurity and environmental problem-solving.
 
----
+## 📚 Documentation
 
-# License
-
-This project is developed for educational purposes.
-
-Users should comply with the licensing requirements of each external dataset used.
-
----
-
-# Acknowledgements
-
-We gratefully acknowledge the following organizations for providing publicly available datasets:
-
-- Missouri Botanical Garden
-- Lady Bird Johnson Wildflower Center
-- United States Department of Agriculture (USDA)
-- Pollinator dataset contributors
-- iNaturalist
-
----
-
-# UN Sustainable Development Goal
-
-This project supports:
-
-**🌍 SDG 15 – Life on Land**
-
-by encouraging the use of native plants to strengthen biodiversity, support pollinators, and promote sustainable urban ecosystems.
+- `docs/project_documentation.md`
+- `docs/data_source_guide.md`
+- `docs/data_dictionary.md`
+- `docs/data_handoff.md`
+- `docs/data_pipeline_architecture.md`
