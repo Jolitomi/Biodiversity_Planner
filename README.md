@@ -288,7 +288,7 @@ This project supports **UN Sustainable Development Goal 15: Life on Land** by en
 1. **Data Foundation (Completed)** — Source, clean, and validate the master dataset
 2. **Application Build (Completed)** — Build the Streamlit recommendation app and app-facing dataset
 3. **Deployment (Completed)** — Deploy publicly via Streamlit; document local run steps
-4. **Documentation & Submission (In progress)** — Finalize README, summary, and walkthrough video
+4. **Documentation & Submission (Completed)** — Finalize README, summary, and walkthrough video
 5. **Post-submission Expansion (Planned)** — Broaden species coverage, add ML-based ranking, mobile polish
 
 **Resources**
