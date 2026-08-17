@@ -204,7 +204,7 @@ Generate Recommendations
 Explore Native Plant Results
 ```
 
-## 🚀 Getting Started Locally
+## 🚀 Getting Started Locally(How to Run)
 
 ### 1. Clone the repository
 
@@ -244,6 +244,9 @@ streamlit run src/app.py
 ```
 
 > The application depends on the processed datasets in `data/processed/`. Do not remove those files when migrating or deploying the application.
+
+## Video Walkthrough
+[Watch the demo](https://app.screencastify.com/watch/kv8Tq2aVjOVxSOWOnJHw)
 
 ## 📁 Showcase Project Structure
 
