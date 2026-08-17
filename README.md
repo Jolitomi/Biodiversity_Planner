@@ -282,6 +282,30 @@ UI/UX refinement was a cross-functional contribution alongside the project's dat
 
 This project supports **UN Sustainable Development Goal 15: Life on Land** by encouraging biodiversity-conscious planting and making native plant information more accessible.
 
+## Implementation Plan
+
+**Steps & Timeline**
+1. **Data Foundation (Completed)** — Source, clean, and validate the master dataset
+2. **Application Build (Completed)** — Build the Streamlit recommendation app and app-facing dataset
+3. **Deployment (Completed)** — Deploy publicly via Streamlit; document local run steps
+4. **Documentation & Submission (In progress)** — Finalize README, summary, and walkthrough video
+5. **Post-submission Expansion (Planned)** — Broaden species coverage, add ML-based ranking, mobile polish
+
+**Resources**
+- Open datasets: Missouri Botanical Garden, Lady Bird Johnson Wildflower Center, USDA PLANTS, iNaturalist
+- Python/Pandas/NumPy for data processing, Streamlit for the front end
+- Team coverage across Data Analytics & UX, Advanced Data Analytics, App Dev & Automation, and Cybersecurity
+- Streamlit Community Cloud for hosting
+
+**Risks & Mitigations**
+| Risk | Mitigation |
+|---|---|
+| Incomplete/inconsistent source data | Data quality report flags gaps; dataset scoped to well-documented species |
+| Recommendations miss edge-case growing conditions | Filtering logic is transparent and explainable, tunable as more data is validated |
+| Hosted app downtime / free-tier limits | Local run instructions documented as fallback |
+| Security exposure on a public-facing app | Dedicated cybersecurity review of input handling and deployment config |
+| Scope creep past deadline | Feature set limited to rule-based engine now; ML ranking deferred to "What's Next" |
+
 ## 🔮 What's Next
 
 Potential future improvements include:
